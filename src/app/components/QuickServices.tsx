@@ -7,6 +7,7 @@ import {
   Wrench,
   ArrowUpRight,
 } from "lucide-react";
+import mapPinImage from "figma:asset/0c588481dedde67adef450c56921092bb501ff82.png";
 
 const services = [
   {
@@ -16,7 +17,7 @@ const services = [
     color: "#0F172A",
     href: "#",
     tag: "서비스 포털",
-    image: "https://images.unsplash.com/photo-1524813686514-a57563d77965?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600",
+    image: mapPinImage,
   },
   {
     icon: User,
@@ -43,7 +44,7 @@ const services = [
     color: "#0F172A",
     href: "#",
     tag: "기금관리",
-    image: "https://images.unsplash.com/photo-1764407395696-495d7fb7fc71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600",
+    image: "https://images.unsplash.com/photo-1648712898089-4435bc87b587?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600",
   },
   {
     icon: Wrench,
@@ -125,7 +126,7 @@ export function QuickServices() {
                 <div className="relative z-10 p-3 @sm:p-5">
                   <div
                     className="text-white mb-1 leading-snug"
-                    style={{ fontSize: "0.875rem", fontWeight: 700 }}
+                    style={{ fontSize: "clamp(1rem, 2.5vw, 1.375rem)", fontWeight: 700 }}
                   >
                     {service.title.split("\n").map((line, j) => (
                       <span key={j} className="block">{line}</span>

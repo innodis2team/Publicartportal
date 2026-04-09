@@ -89,7 +89,16 @@ export function MapSection() {
 
           {/* Right: Map visualization */}
           <div className="relative">
-            <div className="relative bg-gradient-to-br from-[#1a2540] to-[#0d1929] overflow-hidden aspect-square max-w-[480px] mx-auto shadow-2xl">
+            <div className="relative overflow-hidden aspect-square max-w-[480px] mx-auto shadow-2xl">
+              {/* 배경 이미지 */}
+              <img
+                src="https://images.unsplash.com/photo-1504107435030-c7cd582601b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxTb3V0aCUyMEtvcmVhJTIwYWVyaWFsJTIwc2F0ZWxsaXRlJTIwY2l0eSUyMG1hcCUyMHZpZXd8ZW58MXx8fHwxNzc1NzQ0ODA3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                alt="지도 배경"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              {/* 어두운 오버레이 */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#1a2540]/85 to-[#0d1929]/80" />
+
               {/* Grid lines */}
               <div className="absolute inset-0 opacity-10">
                 {[...Array(8)].map((_, i) => (

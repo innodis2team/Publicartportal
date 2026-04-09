@@ -151,7 +151,7 @@ export function FeaturedArtworks() {
                   key={artwork.id}
                   className="group flex gap-4 bg-white p-4 cursor-pointer hover:shadow-lg transition-shadow duration-300"
                 >
-                  <div className="flex-shrink-0 w-24 h-24 overflow-hidden">
+                  <div className="flex-shrink-0 w-36 h-36 overflow-hidden">
                     <img
                       src={artwork.image}
                       alt={artwork.title}

@@ -85,7 +85,7 @@ export function ArtistSection() {
               </div>
 
               <div className="absolute bottom-0 left-0 right-0 p-5 @lg:p-6">
-                <h3 className="text-white mb-1" style={{ fontSize: "1.25rem", fontWeight: 700 }}>
+                <h3 className="text-white mb-1" style={{ fontSize: "1.5rem", fontWeight: 700 }}>
                   {artist.name}
                 </h3>
                 <p className="text-gray-300 text-sm mb-3">{artist.specialty}</p>
