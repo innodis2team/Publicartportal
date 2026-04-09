@@ -42,7 +42,7 @@ const menuData = [
     color: "#10B981",
     items: [
       { label: "점검관리", href: "#" },
-      { label: "보수관���", href: "#" },
+      { label: "보수��", href: "#" },
     ],
   },
   {
@@ -92,7 +92,7 @@ export function Header() {
   return (
     <>
       {/* Top utility bar — 컨테이너 640px 이상일 때만 표시 */}
-      <div className="hidden @sm:block bg-[#0F172A] text-gray-400 text-xs py-2">
+      <div className="hidden sm:block bg-[#0F172A] text-gray-400 text-xs py-2">
         <div className="max-w-[1400px] mx-auto px-6 flex justify-between items-center">
           <span>건축물미술작품 통합관리시스템</span>
           <div className="flex items-center gap-4">
@@ -120,16 +120,16 @@ export function Header() {
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="flex items-center h-16">
             {/* Logo */}
-            <a href="#" className="flex items-center gap-3 mr-10 flex-shrink-0">
-              <div className="w-9 h-9 bg-[#1E3A8A] flex items-center justify-center">
-                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
+            <a href="#" className="flex items-center gap-2 mr-4 @lg:mr-10 flex-shrink-0 min-w-0">
+              <div className="w-8 h-8 @sm:w-9 @sm:h-9 bg-[#1E3A8A] flex items-center justify-center flex-shrink-0">
+                <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 @sm:w-5 @sm:h-5 text-white" stroke="currentColor" strokeWidth="2">
                   <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
                   <polyline points="9 22 9 12 15 12 15 22"/>
                 </svg>
               </div>
-              <div>
-                <div className="text-[#1E3A8A] font-bold text-base leading-tight tracking-tight">공공미술포털</div>
-                <div className="text-gray-400 text-[10px] leading-tight">건축물미술작품통합관리시스템</div>
+              <div className="min-w-0">
+                <div className="text-[#1E3A8A] font-bold text-sm @sm:text-base leading-tight tracking-tight whitespace-nowrap">공공미술포털</div>
+                <div className="text-gray-400 text-[10px] leading-tight hidden @sm:block">건축물미술작품통합관리시스템</div>
               </div>
             </a>
 
@@ -179,17 +179,25 @@ export function Header() {
             </nav>
 
             {/* Right side */}
-            <div className="flex items-center gap-2 ml-auto">
+            <div className="flex items-center gap-1 @sm:gap-2 ml-auto flex-shrink-0">
+              {/* 통합검색 — 데스크탑 텍스트, 모바일 아이콘 */}
               <button className="hidden @lg:flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-[#1E3A8A] transition-colors hover:bg-gray-100">
                 <Search size={16} />
                 <span>통합검색</span>
               </button>
+              <button className="@lg:hidden p-2 text-gray-600 hover:text-[#1E3A8A] hover:bg-gray-100 transition-colors">
+                <Search size={18} />
+              </button>
+              {/* 로그인 — 데스크탑 텍스트, 모바일 아이콘 */}
               <button className="hidden @lg:block bg-[#1E3A8A] text-white text-sm px-4 py-2 hover:bg-[#1e40af] transition-colors">
                 로그인
               </button>
+              <button className="@lg:hidden p-2 text-gray-600 hover:text-[#1E3A8A] hover:bg-gray-100 transition-colors">
+                <User size={18} />
+              </button>
               {/* 모바일 햄버거 — 컨테이너 1024px 미만 */}
               <button
-                className="@lg:hidden p-2 hover:bg-gray-100"
+                className="@lg:hidden p-2 hover:bg-gray-100 transition-colors"
                 onClick={() => setMobileOpen(!mobileOpen)}
               >
                 {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -209,7 +217,7 @@ export function Header() {
 
         {/* Mobile menu */}
         {mobileOpen && (
-          <div className="@lg:hidden bg-white border-t border-gray-100 max-h-screen overflow-y-auto">
+          <div className="@lg:hidden bg-white border-t border-gray-100 max-h-[80vh] overflow-y-auto shadow-lg">
             {menuData.map((menu) => (
               <div key={menu.id} className="border-b border-gray-50">
                 <button
@@ -220,14 +228,14 @@ export function Header() {
                 >
                   <span className="flex items-center gap-2">
                     <span
-                      className="w-2 h-2 rounded-full"
+                      className="w-2 h-2 rounded-full flex-shrink-0"
                       style={{ backgroundColor: menu.color }}
                     />
                     {menu.label}
                   </span>
                   <ChevronDown
                     size={16}
-                    className={`transition-transform ${
+                    className={`transition-transform flex-shrink-0 ${
                       mobileExpanded === menu.id ? "rotate-180" : ""
                     }`}
                   />
@@ -247,6 +255,17 @@ export function Header() {
                 )}
               </div>
             ))}
+            {/* 모바일 하단 — 통합검색 & 로그인 */}
+            <div className="px-6 py-4 flex gap-3 bg-gray-50 border-t border-gray-100">
+              <button className="flex-1 flex items-center justify-center gap-2 border border-gray-300 py-2.5 text-sm text-gray-700 hover:border-[#1E3A8A] hover:text-[#1E3A8A] transition-colors">
+                <Search size={15} />
+                통합검색
+              </button>
+              <button className="flex-1 bg-[#1E3A8A] text-white text-sm py-2.5 hover:bg-[#1e40af] transition-colors flex items-center justify-center gap-2">
+                <User size={15} />
+                로그인
+              </button>
+            </div>
           </div>
         )}
       </header>
