@@ -1,5 +1,5 @@
 {
-  "name": "@figma/my-make-file",
+  "name": "public-art-portal",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -76,21 +76,7 @@
     "typescript": "5.7.2",
     "vite": "6.3.5"
   },
-  "peerDependencies": {
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
-  },
-  "peerDependenciesMeta": {
-    "react": {
-      "optional": true
-    },
-    "react-dom": {
-      "optional": true
-    }
-  },
-  "pnpm": {
-    "overrides": {
-      "vite": "6.3.5"
-    }
+  "overrides": {
+    "vite": "6.3.5"
   }
 }
