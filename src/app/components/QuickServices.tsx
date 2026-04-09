@@ -7,7 +7,6 @@ import {
   Wrench,
   ArrowUpRight,
 } from "lucide-react";
-import mapPinImage from "figma:asset/0c588481dedde67adef450c56921092bb501ff82.png";
 
 const services = [
   {
@@ -17,7 +16,7 @@ const services = [
     color: "#0F172A",
     href: "#",
     tag: "서비스 포털",
-    image: mapPinImage,
+    image: "https://images.unsplash.com/photo-1619468129361-605ebea04b44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600",
   },
   {
     icon: User,
@@ -43,7 +42,7 @@ const services = [
     description: "기금 출연 계획 및 확인 서비스",
     color: "#0F172A",
     href: "#",
-    tag: "기금관리",
+    tag: "기금��리",
     image: "https://images.unsplash.com/photo-1648712898089-4435bc87b587?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600",
   },
   {
