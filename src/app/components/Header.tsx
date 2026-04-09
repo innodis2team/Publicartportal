@@ -1,0 +1,255 @@
+import { useState, useRef, useEffect } from "react";
+import { ChevronDown, Menu, X, Search, Bell, User, UserPlus } from "lucide-react";
+
+const menuData = [
+  {
+    id: "service",
+    label: "서비스 포털",
+    color: "#3B82F6",
+    items: [
+      { label: "로그인 / 로그아웃", href: "#" },
+      { label: "지도기반 작품현황", href: "#" },
+      { label: "작가 포트폴리오", href: "#" },
+      { label: "시민참여 공간", href: "#" },
+    ],
+  },
+  {
+    id: "fund",
+    label: "기금관리",
+    color: "#8B5CF6",
+    items: [
+      { label: "기금출연계획", href: "#" },
+      { label: "기금출연확인", href: "#" },
+      { label: "기부금확인", href: "#" },
+      { label: "기부금확인서 발급", href: "#" },
+    ],
+  },
+  {
+    id: "artwork",
+    label: "작품관리",
+    color: "#EC4899",
+    items: [
+      { label: "건축물관리", href: "#" },
+      { label: "작가관리", href: "#" },
+      { label: "작품관리", href: "#" },
+      { label: "철거관리", href: "#" },
+      { label: "철거작품관리", href: "#" },
+    ],
+  },
+  {
+    id: "preservation",
+    label: "보존관리",
+    color: "#10B981",
+    items: [
+      { label: "점검관리", href: "#" },
+      { label: "보수관���", href: "#" },
+    ],
+  },
+  {
+    id: "stats",
+    label: "통계관리",
+    color: "#F59E0B",
+    items: [
+      { label: "작품현황", href: "#" },
+      { label: "보수현황", href: "#" },
+      { label: "철거현황", href: "#" },
+      { label: "기금현황", href: "#" },
+    ],
+  },
+  {
+    id: "board",
+    label: "게시판",
+    color: "#06B6D4",
+    items: [
+      { label: "공지사항", href: "#" },
+      { label: "자료실", href: "#" },
+    ],
+  },
+];
+
+export function Header() {
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleMenuEnter = (id: string) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setActiveMenu(id);
+  };
+
+  const handleMenuLeave = () => {
+    timeoutRef.current = setTimeout(() => setActiveMenu(null), 150);
+  };
+
+  return (
+    <>
+      {/* Top utility bar — 컨테이너 640px 이상일 때만 표시 */}
+      <div className="hidden @sm:block bg-[#0F172A] text-gray-400 text-xs py-2">
+        <div className="max-w-[1400px] mx-auto px-6 flex justify-between items-center">
+          <span>건축물미술작품 통합관리시스템</span>
+          <div className="flex items-center gap-4">
+            <a href="#" className="hover:text-white transition-colors flex items-center gap-1">
+              <Bell size={12} /> 공지사항
+            </a>
+            <a href="#" className="hover:text-white transition-colors flex items-center gap-1">
+              <User size={12} /> 마이페이지
+            </a>
+            <a href="#" className="hover:text-white transition-colors flex items-center gap-1">
+              <UserPlus size={12} /> 회원가입
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Main header */}
+      <header
+        className={`sticky top-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-white/95 backdrop-blur-md shadow-lg"
+            : "bg-white shadow-sm"
+        }`}
+      >
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="flex items-center h-16">
+            {/* Logo */}
+            <a href="#" className="flex items-center gap-3 mr-10 flex-shrink-0">
+              <div className="w-9 h-9 bg-[#1E3A8A] flex items-center justify-center">
+                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              </div>
+              <div>
+                <div className="text-[#1E3A8A] font-bold text-base leading-tight tracking-tight">공공미술포털</div>
+                <div className="text-gray-400 text-[10px] leading-tight">건축물미술작품통합관리시스템</div>
+              </div>
+            </a>
+
+            {/* Desktop Navigation — 컨테이너 1024px 이상 */}
+            <nav className="hidden @lg:flex items-center flex-1" onMouseLeave={handleMenuLeave}>
+              {menuData.map((menu) => (
+                <div
+                  key={menu.id}
+                  className="relative"
+                  onMouseEnter={() => handleMenuEnter(menu.id)}
+                >
+                  <button
+                    className={`flex items-center gap-1 px-3.5 py-5 text-sm font-medium transition-colors whitespace-nowrap ${
+                      activeMenu === menu.id
+                        ? "text-[#1E3A8A]"
+                        : "text-gray-600 hover:text-[#1E3A8A]"
+                    }`}
+                  >
+                    {menu.label}
+                    <ChevronDown
+                      size={14}
+                      className={`transition-transform duration-200 ${
+                        activeMenu === menu.id ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {activeMenu === menu.id && (
+                    <div className="absolute top-full left-0 min-w-[180px] bg-white shadow-2xl border border-gray-100 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                      <div
+                        className="h-0.5 mx-3 mb-2"
+                        style={{ backgroundColor: menu.color }}
+                      />
+                      {menu.items.map((item) => (
+                        <a
+                          key={item.label}
+                          href={item.href}
+                          className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#1E3A8A] transition-colors"
+                        >
+                          {item.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </nav>
+
+            {/* Right side */}
+            <div className="flex items-center gap-2 ml-auto">
+              <button className="hidden @lg:flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-[#1E3A8A] transition-colors hover:bg-gray-100">
+                <Search size={16} />
+                <span>통합검색</span>
+              </button>
+              <button className="hidden @lg:block bg-[#1E3A8A] text-white text-sm px-4 py-2 hover:bg-[#1e40af] transition-colors">
+                로그인
+              </button>
+              {/* 모바일 햄버거 — 컨테이너 1024px 미만 */}
+              <button
+                className="@lg:hidden p-2 hover:bg-gray-100"
+                onClick={() => setMobileOpen(!mobileOpen)}
+              >
+                {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {activeMenu && (
+          <div
+            className="absolute bottom-0 left-0 right-0 h-0.5 transition-all duration-300"
+            style={{
+              backgroundColor: menuData.find((m) => m.id === activeMenu)?.color,
+            }}
+          />
+        )}
+
+        {/* Mobile menu */}
+        {mobileOpen && (
+          <div className="@lg:hidden bg-white border-t border-gray-100 max-h-screen overflow-y-auto">
+            {menuData.map((menu) => (
+              <div key={menu.id} className="border-b border-gray-50">
+                <button
+                  className="w-full flex items-center justify-between px-6 py-4 text-sm font-medium text-gray-800"
+                  onClick={() =>
+                    setMobileExpanded(mobileExpanded === menu.id ? null : menu.id)
+                  }
+                >
+                  <span className="flex items-center gap-2">
+                    <span
+                      className="w-2 h-2 rounded-full"
+                      style={{ backgroundColor: menu.color }}
+                    />
+                    {menu.label}
+                  </span>
+                  <ChevronDown
+                    size={16}
+                    className={`transition-transform ${
+                      mobileExpanded === menu.id ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {mobileExpanded === menu.id && (
+                  <div className="bg-gray-50 pb-2">
+                    {menu.items.map((item) => (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        className="block px-10 py-2.5 text-sm text-gray-600 hover:text-[#1E3A8A]"
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </header>
+    </>
+  );
+}
