@@ -2,29 +2,29 @@ import { MapPin, Phone, Mail, ExternalLink } from "lucide-react";
 
 const footerLinks = [
   {
-    title: "서비스",
+    title: "제도 소개",
     links: [
-      { label: "지도기반 작품현황", href: "#" },
-      { label: "작가 포트폴리오", href: "#" },
-      { label: "시민참여 공간", href: "#" },
+      { label: "제도 개요", href: "#" },
+      { label: "제도 운영", href: "#" },
+      { label: "관련법령", href: "#" },
+      { label: "미술위원회 소개", href: "#" },
     ],
   },
   {
-    title: "관리",
+    title: "미술작품",
     links: [
-      { label: "기금관리", href: "#" },
-      { label: "작품관리", href: "#" },
-      { label: "보존관리", href: "#" },
-      { label: "통계관리", href: "#" },
+      { label: "미술작품통합검색", href: "#" },
+      { label: "작품유형통계", href: "#" },
+      { label: "건축물유형통계", href: "#" },
+      { label: "건축물용도별통계", href: "#" },
     ],
   },
   {
-    title: "정보",
+    title: "기금출연",
     links: [
-      { label: "공지사항", href: "#" },
-      { label: "자료실", href: "#" },
-      { label: "개인정보처리방침", href: "#" },
-      { label: "이용약관", href: "#" },
+      { label: "기금출연 결제이용", href: "#" },
+      { label: "기금신청하기", href: "#" },
+      { label: "기금출연현황", href: "#" },
     ],
   },
 ];
@@ -60,15 +60,15 @@ export function Footer() {
           {/* Brand */}
           <div className="@lg:col-span-1">
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-9 h-9 bg-[#1E3A8A] flex items-center justify-center">
-                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-                  <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-              </div>
-              <div>
+              <svg viewBox="0 0 24 24" className="w-9 h-9 text-white flex-shrink-0" fill="currentColor">
+                <circle cx="5" cy="6" r="4" />
+                <circle cx="15" cy="6" r="4" />
+                <rect x="1" y="14" width="8" height="8" />
+                <polygon points="15,14 20,22 10,22" />
+              </svg>
+              <div className="leading-tight">
                 <div className="text-white font-bold text-sm">공공미술포털</div>
-                <div className="text-gray-500 text-[10px]">건축물미술작품통합관리시스템</div>
+                <div className="text-gray-400 font-semibold text-[10px]">Public Art Portal</div>
               </div>
             </div>
             <p className="text-gray-500 text-xs leading-relaxed mb-6">
@@ -77,15 +77,15 @@ export function Footer() {
             <div className="space-y-2.5">
               <div className="flex items-start gap-2.5 text-xs">
                 <MapPin size={13} className="text-blue-500 mt-0.5 flex-shrink-0" />
-                <span>서울특별시 종로구 율곡로 57, 예술가의집</span>
+                <span>전라남도 나주시 빛가람로 601 (58217) 한국문화예술위원회</span>
               </div>
               <div className="flex items-center gap-2.5 text-xs">
                 <Phone size={13} className="text-blue-500 flex-shrink-0" />
-                <span>1588-1234</span>
+                <span>고객센터 1899-2480</span>
               </div>
               <div className="flex items-center gap-2.5 text-xs">
                 <Mail size={13} className="text-blue-500 flex-shrink-0" />
-                <span>publicart@example.go.kr</span>
+                <span>publicart@arko.or.kr</span>
               </div>
             </div>
           </div>
@@ -116,14 +116,15 @@ export function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/5 py-5">
         <div className="max-w-[1400px] mx-auto px-6 flex flex-col @sm:flex-row items-center justify-between gap-3">
-          <p className="text-gray-600 text-xs text-center @sm:text-left">
-            © 2026 공공미술포털 (건축물미술작품통합관리시스템). All rights reserved.
-          </p>
-          <div className="flex items-center gap-4 @lg:gap-6">
-            <a href="#" className="text-gray-600 hover:text-gray-400 text-xs transition-colors">개인정보처리방침</a>
-            <a href="#" className="text-gray-600 hover:text-gray-400 text-xs transition-colors">이용약관</a>
-            <a href="#" className="text-gray-600 hover:text-gray-400 text-xs transition-colors">접근성 정책</a>
+          <div className="flex items-center gap-4 @lg:gap-6 order-1 @sm:order-none">
+            <a href="#" className="text-gray-400 hover:text-white text-xs transition-colors">사이트안내</a>
+            <a href="#" className="text-gray-400 hover:text-white text-xs transition-colors">저작권안내</a>
+            <a href="#" className="text-gray-400 hover:text-white text-xs transition-colors">개인정보처리방침</a>
+            <a href="#" className="text-gray-400 hover:text-white text-xs transition-colors">사이트맵</a>
           </div>
+          <p className="text-gray-600 text-xs text-center @sm:text-right">
+            copyright 2026 공공미술포털 All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

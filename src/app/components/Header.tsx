@@ -3,66 +3,57 @@ import { ChevronDown, Menu, X, Search, Bell, User, UserPlus } from "lucide-react
 
 const menuData = [
   {
-    id: "service",
-    label: "서비스 포털",
+    id: "intro",
+    label: "제도 소개",
     color: "#3B82F6",
     items: [
-      { label: "로그인 / 로그아웃", href: "#" },
-      { label: "지도기반 작품현황", href: "#" },
-      { label: "작가 포트폴리오", href: "#" },
-      { label: "시민참여 공간", href: "#" },
+      { label: "제도 개요", href: "#" },
+      { label: "제도 운영", href: "#" },
+      { label: "관련법령", href: "#" },
+      { label: "자치법규", href: "#" },
+      { label: "미술위원회 FAQ", href: "#" },
+      { label: "미술위원회 소개", href: "#" },
     ],
   },
   {
-    id: "fund",
-    label: "기금관리",
+    id: "search",
+    label: "미술작품검색",
     color: "#8B5CF6",
     items: [
-      { label: "기금출연계획", href: "#" },
-      { label: "기금출연확인", href: "#" },
-      { label: "기부금확인", href: "#" },
-      { label: "기부금확인서 발급", href: "#" },
-    ],
-  },
-  {
-    id: "artwork",
-    label: "작품관리",
-    color: "#EC4899",
-    items: [
-      { label: "건축물관리", href: "#" },
-      { label: "작가관리", href: "#" },
-      { label: "작품관리", href: "#" },
-      { label: "철거관리", href: "#" },
-      { label: "철거작품관리", href: "#" },
-    ],
-  },
-  {
-    id: "preservation",
-    label: "보존관리",
-    color: "#10B981",
-    items: [
-      { label: "점검관리", href: "#" },
-      { label: "보수��", href: "#" },
+      { label: "미술작품통합검색", href: "#" },
+      { label: "지도기반 작품현황", href: "#" },
     ],
   },
   {
     id: "stats",
-    label: "통계관리",
-    color: "#F59E0B",
+    label: "미술작품통계",
+    color: "#EC4899",
     items: [
-      { label: "작품현황", href: "#" },
-      { label: "보수현황", href: "#" },
-      { label: "철거현황", href: "#" },
-      { label: "기금현황", href: "#" },
+      { label: "작품유형통계", href: "#" },
+      { label: "작품지역별통계", href: "#" },
+      { label: "건축물유형통계", href: "#" },
+      { label: "건축물연면적통계", href: "#" },
+      { label: "건축물용도별통계", href: "#" },
     ],
   },
   {
     id: "board",
-    label: "게시판",
-    color: "#06B6D4",
+    label: "자료실",
+    color: "#10B981",
     items: [
       { label: "공지사항", href: "#" },
       { label: "자료실", href: "#" },
+      { label: "FAQ", href: "#" },
+    ],
+  },
+  {
+    id: "fund",
+    label: "건축물미술작품 기금출연",
+    color: "#F59E0B",
+    items: [
+      { label: "기금출연 결제이용", href: "#" },
+      { label: "기금신청하기", href: "#" },
+      { label: "기금출연현황", href: "#" },
     ],
   },
 ];
@@ -120,16 +111,16 @@ export function Header() {
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="flex items-center h-16">
             {/* Logo */}
-            <a href="#" className="flex items-center gap-2 mr-4 @lg:mr-10 flex-shrink-0 min-w-0">
-              <div className="w-8 h-8 @sm:w-9 @sm:h-9 bg-[#1E3A8A] flex items-center justify-center flex-shrink-0">
-                <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 @sm:w-5 @sm:h-5 text-white" stroke="currentColor" strokeWidth="2">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-                  <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-              </div>
-              <div className="min-w-0">
-                <div className="text-[#1E3A8A] font-bold text-sm @sm:text-base leading-tight tracking-tight whitespace-nowrap">공공미술포털</div>
-                <div className="text-gray-400 text-[10px] leading-tight hidden @sm:block">건축물미술작품통합관리시스템</div>
+            <a href="#" className="flex items-center gap-2.5 mr-4 @lg:mr-10 flex-shrink-0 min-w-0">
+              <svg viewBox="0 0 24 24" className="w-8 h-8 @sm:w-9 @sm:h-9 flex-shrink-0 text-[#0F172A]" fill="currentColor">
+                <circle cx="5" cy="6" r="4" />
+                <circle cx="15" cy="6" r="4" />
+                <rect x="1" y="14" width="8" height="8" />
+                <polygon points="15,14 20,22 10,22" />
+              </svg>
+              <div className="min-w-0 leading-tight">
+                <div className="text-[#0F172A] font-bold text-sm @sm:text-base tracking-tight whitespace-nowrap">공공미술포털</div>
+                <div className="text-[#0F172A] font-semibold text-[10px] @sm:text-xs tracking-tight whitespace-nowrap hidden @sm:block">Public Art Portal</div>
               </div>
             </a>
 

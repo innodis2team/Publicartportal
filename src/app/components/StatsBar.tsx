@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
-  { label: "등록 작품 수", value: 38742, suffix: "점", color: "#3B82F6" },
+  { label: "등록 작품 수", value: 25685, suffix: "점", color: "#3B82F6" },
   { label: "참여 작가 수", value: 12480, suffix: "명", color: "#8B5CF6" },
   { label: "관리 건축물", value: 29361, suffix: "동", color: "#10B981" },
   { label: "기금 출연액", value: 4827, suffix: "억원", color: "#F59E0B" },
